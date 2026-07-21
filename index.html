@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#050816" />
+  <meta name="description" content="Connect with a USDT buyer and lock today's rate." />
+  <meta property="og:title" content="USDT Buyer Desk" />
+  <meta property="og:description" content="Lock the rate. Get paid. Transfer USDT." />
+  <meta property="og:type" content="website" />
+  <title>USDT Buyer Desk</title>
+
+  <link rel="stylesheet" href="core.css">
+  <link rel="stylesheet" href="components.css">
+  <link rel="stylesheet" href="responsive.css">
+</head>
+
+<body>
+  <canvas id="chart" aria-hidden="true"></canvas>
+  <div class="orb a"></div>
+  <div class="orb b"></div>
+
+  <main class="stage">
+    <section class="app">
+      <header class="topbar">
+        <div class="desk">
+          <div class="mark" aria-hidden="true">
+            <svg viewBox="0 0 64 64" fill="none">
+              <path d="M32 4 53 12v16c0 14.2-8.9 25.7-21 31.8C19.9 53.7 11 42.2 11 28V12L32 4Z" stroke="#61E7FF" stroke-width="4"/>
+              <path d="M20 21h24M32 21v23M24 29h16" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round"/>
+            </svg>
+          </div>
+
+          <div class="desk-copy">
+            <p class="desk-name">USDT Buyer Desk</p>
+            <p class="desk-sub">Direct buyer contact</p>
+          </div>
+        </div>
+
+        <div class="online"><span class="dot"></span> Buyers Online</div>
+      </header>
+
+      <section class="hero">
+        <p class="kicker">Fast • Direct • Secure</p>
+        <h1>
+          <span class="title-top">SELL YOUR USDT.</span>
+          <span class="title-bottom">GET PAID FIRST.</span>
+        </h1>
+        <p><strong>Lock the rate.</strong> Receive payment. Transfer USDT.</p>
+      </section>
+
+      <section class="rate" aria-label="Current USDT buying rate">
+        <div class="rate-label">Today's Buying Rate</div>
+
+        <div class="rate-inner">
+          <div class="rate-value" id="rateText">₹115</div>
+
+          <div class="rate-side">
+            <strong>per USDT</strong>
+            <span>Live buyer rate</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="deal-box" aria-label="Deal details">
+        <label class="field">
+          <span class="field-icon">$</span>
+
+          <span class="field-copy">
+            <span class="field-label">USDT Amount</span>
+            <input id="amountInput" type="number" inputmode="decimal" min="1" placeholder="Enter amount" />
+          </span>
+        </label>
+
+        <div class="network">
+          <label for="networkSelect">Network</label>
+
+          <select id="networkSelect">
+            <option value="TRC20">TRC20</option>
+            <option value="BEP20">BEP20</option>
+            <option value="ERC20">ERC20</option>
+          </select>
+        </div>
+      </section>
+
+      <section class="trust">
+        <div class="shield" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M12 3 20 6v5c0 5.2-3.2 8.6-8 10-4.8-1.4-8-4.8-8-10V6l8-3Z" stroke="currentColor" stroke-width="2"/>
+            <path d="m8.6 12 2.2 2.2 4.9-5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+
+        <div class="trust-copy">
+          <h2>Advance Payment</h2>
+          <p>Payment first. USDT transfer next.</p>
+        </div>
+
+        <div class="verified">✓ Direct Desk</div>
+      </section>
+
+      <section class="benefits" aria-label="Benefits">
+        <article class="benefit">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M13 2 5 14h6l-1 8 9-13h-6V2Z" fill="currentColor"/>
+            </svg>
+          </div>
+          <strong>Fast Reply</strong>
+          <span>Talk directly</span>
+        </article>
+
+        <article class="benefit">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M4 19V9m5 10V5m5 14v-7m5 7V3" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <strong>Bulk Rates</strong>
+          <span>Better pricing</span>
+        </article>
+
+        <article class="benefit">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24" fill="none">
+              <rect x="3" y="5" width="18" height="16" rx="3" stroke="currentColor" stroke-width="2"/>
+              <path d="M7 3v4m10-4v4M3 10h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <strong>Same Day</strong>
+          <span>Quick settlement</span>
+        </article>
+      </section>
+
+      <section class="contact-grid">
+        <a class="contact-btn whatsapp" id="whatsappBtn" href="#">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M20.5 11.7a8.5 8.5 0 0 1-12.6 7.5L3 20.5l1.3-4.7A8.5 8.5 0 1 1 20.5 11.7Z" stroke="currentColor" stroke-width="2"/>
+            <path d="M8.2 7.8c.4-.4.8-.2 1 .2l.9 2c.2.4.1.7-.2 1l-.6.7c.7 1.5 1.7 2.5 3.2 3.2l.7-.7c.3-.3.7-.4 1-.2l2 .9c.4.2.6.6.2 1-1 1.1-2.1 1.5-3.5 1-3.7-1.2-6.5-4-7.7-7.7-.5-1.4-.1-2.5 1-3.4Z" fill="currentColor"/>
+          </svg>
+
+          <span class="contact-copy">
+            <strong>WhatsApp Buyer</strong>
+            <span>Fast response</span>
+          </span>
+        </a>
+
+        <a class="contact-btn telegram" id="telegramBtn" href="#">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="m21 4-3 16-6-4-3 3-1-5-5-2 18-8Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+            <path d="m8 14 10-7-8 9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+
+          <span class="contact-copy">
+            <strong>Telegram Buyer</strong>
+            <span>Direct contact</span>
+          </span>
+        </a>
+      </section>
+
+      <section class="logos">
+        <p class="logos-title">Popular USDT Ecosystem Names</p>
+
+        <div class="logo-row">
+          <div class="logo t">Tether</div>
+          <div class="logo b">Binance</div>
+          <div class="logo tr">TRON</div>
+          <div class="logo tw">Trust Wallet</div>
+          <div class="logo m">MetaMask</div>
+        </div>
+
+        <p class="fine">Names shown for ecosystem reference only. No partnership or endorsement is implied.</p>
+      </section>
+
+      <footer class="footer">
+        <span>© 2026 USDT Buyer Desk</span>
+        <span>•</span>
+        <button type="button" id="privacyBtn">Privacy & Tracking</button>
+      </footer>
+    </section>
+  </main>
+
+  <div class="toast" id="toast"></div>
+
+  <aside class="consent" id="consentBox" aria-live="polite">
+    <p><strong>Privacy choice:</strong> Meta Pixel can measure visits and contact clicks from ads. Tracking starts only after you accept.</p>
+
+    <div class="consent-actions">
+      <button class="accept" id="acceptTracking" type="button">Accept</button>
+      <button class="decline" id="declineTracking" type="button">Decline</button>
+    </div>
+  </aside>
+
+  <div class="modal" id="privacyModal" role="dialog" aria-modal="true" aria-labelledby="privacyTitle">
+    <div class="modal-card">
+      <div class="modal-top">
+        <h3 id="privacyTitle">Privacy & Tracking</h3>
+        <button class="modal-close" id="closePrivacy" type="button" aria-label="Close">✕</button>
+      </div>
+
+      <p>This landing page may use Meta Pixel after consent to measure ad performance, page visits, WhatsApp clicks and Telegram clicks. No payment details are collected here.</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
