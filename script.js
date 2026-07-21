@@ -2,7 +2,7 @@
        QUICK CONFIG — ADD YOUR DETAILS LATER
     ========================================================== */
     const CONFIG = {
-      rate: 115,
+      rate: 135,
 
       // Keep blank until you add your own WhatsApp number:
       whatsappNumber: "",
