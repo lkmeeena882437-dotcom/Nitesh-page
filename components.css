@@ -1,0 +1,246 @@
+    .trust{
+      display:grid;
+      grid-template-columns:42px minmax(0,1fr) auto;
+      align-items:center;
+      gap:10px;
+      padding:11px 12px;
+      border:1px solid rgba(138,103,255,.40);
+      border-radius:20px;
+      background:linear-gradient(120deg,rgba(22,26,65,.96),rgba(10,14,34,.96));
+      box-shadow:0 0 28px rgba(138,103,255,.05), inset 0 0 0 1px rgba(255,255,255,.02);
+    }
+
+    .shield{
+      width:42px;
+      height:42px;
+      display:grid;
+      place-items:center;
+      border-radius:14px;
+      color:white;
+      background:linear-gradient(145deg,#63d8ff,#6c50f4);
+      box-shadow:0 10px 26px rgba(87,100,255,.24),0 0 0 6px rgba(138,103,255,.05);
+    }
+
+    .shield svg{width:24px;height:24px}
+
+    .trust-copy{
+      min-width:0;
+    }
+
+    .trust-copy h2{
+      margin:0;
+      color:#ffffff;
+      font-size:15px;
+      line-height:1.05;
+      letter-spacing:-.02em;
+    }
+
+    .trust-copy p{
+      margin:3px 0 0;
+      color:#98a4c2;
+      font-size:10px;
+      font-weight:760;
+      white-space:normal;
+    }
+
+    .verified{
+      display:inline-flex;
+      align-items:center;
+      gap:5px;
+      padding:7px 9px;
+      border-radius:999px;
+      color:#15162d;
+      background:linear-gradient(180deg,#ffe993,#ffd15a);
+      box-shadow:0 8px 18px rgba(255,215,106,.14);
+      font-size:8px;
+      font-weight:1000;
+      letter-spacing:.07em;
+      text-transform:uppercase;
+      white-space:nowrap;
+    }
+
+    .benefits{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:7px;
+    }
+
+    .benefit{
+      min-width:0;
+      padding:10px 6px;
+      border:1px solid rgba(255,255,255,.09);
+      border-radius:17px;
+      background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.016));
+      text-align:center;
+    }
+
+    .benefit-icon{
+      width:29px;
+      height:29px;
+      margin:0 auto 5px;
+      display:grid;
+      place-items:center;
+      border-radius:10px;
+      color:#9beaff;
+      background:rgba(78,181,255,.085);
+      border:1px solid rgba(97,231,255,.12);
+    }
+
+    .benefit-icon svg{width:17px;height:17px}
+
+    .benefit strong{
+      display:block;
+      color:#ffffff;
+      font-size:10px;
+      line-height:1.08;
+    }
+
+    .benefit span{
+      display:block;
+      margin-top:3px;
+      color:#77829f;
+      font-size:8px;
+      font-weight:780;
+      line-height:1.1;
+    }
+
+    .contact-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:8px;
+    }
+
+    .contact-btn{
+      position:relative;
+      min-height:58px;
+      display:grid;
+      grid-template-columns:auto 1fr;
+      align-items:center;
+      gap:10px;
+      padding:0 13px;
+      overflow:hidden;
+      border-radius:20px;
+      text-decoration:none;
+      transition:transform .18s ease,filter .18s ease;
+      -webkit-tap-highlight-color:transparent;
+    }
+
+    .contact-btn:hover{transform:translateY(-2px)}
+    .contact-btn:active{transform:scale(.985)}
+
+    .contact-btn svg{
+      width:26px;
+      height:26px;
+      flex:0 0 auto;
+    }
+
+    .contact-copy{
+      min-width:0;
+      text-align:left;
+    }
+
+    .contact-copy strong{
+      display:block;
+      font-size:13px;
+      line-height:1.05;
+      font-weight:1000;
+      letter-spacing:-.02em;
+      white-space:nowrap;
+    }
+
+    .contact-copy span{
+      display:block;
+      margin-top:3px;
+      font-size:8px;
+      font-weight:900;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      white-space:nowrap;
+    }
+
+    .whatsapp{
+      color:#051008;
+      border:1px solid rgba(207,255,234,.85);
+      background:linear-gradient(110deg,#aaf9cc 0%,#50dc9c 50%,#20c77c 100%);
+      box-shadow:0 16px 34px rgba(32,199,124,.20), inset 0 1px 0 rgba(255,255,255,.55);
+    }
+
+    .whatsapp .contact-copy span{color:#14583a}
+
+    .telegram{
+      color:#ffffff;
+      border:1px solid rgba(133,218,255,.65);
+      background:linear-gradient(110deg,#2578e8 0%,#4eaef5 50%,#7255ed 100%);
+      box-shadow:0 16px 34px rgba(63,116,236,.20), inset 0 1px 0 rgba(255,255,255,.28);
+    }
+
+    .telegram .contact-copy span{color:#dcecff}
+
+    .logos{
+      padding:9px 10px 8px;
+      border:1px solid rgba(255,255,255,.075);
+      border-radius:17px;
+      background:rgba(255,255,255,.02);
+      text-align:center;
+    }
+
+    .logos-title{
+      margin:0 0 7px;
+      color:#7d88a7;
+      font-size:7px;
+      font-weight:1000;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+    }
+
+    .logo-row{
+      display:grid;
+      grid-template-columns:repeat(5,1fr);
+      gap:5px;
+    }
+
+    .logo{
+      min-width:0;
+      padding:7px 4px;
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:10px;
+      background:rgba(255,255,255,.025);
+      font-size:8px;
+      font-weight:1000;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .logo.t{color:#81e9ff}
+    .logo.b{color:#ffd971}
+    .logo.tr{color:#ff8ba3}
+    .logo.tw{color:#7cc2ff}
+    .logo.m{color:#d7a2ff}
+
+    .fine{
+      margin:5px 0 0;
+      color:#59627b;
+      font-size:6.5px;
+      line-height:1.25;
+    }
+
+    .footer{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      color:#58617a;
+      font-size:8px;
+      line-height:1;
+    }
+
+    .footer button{
+      border:0;
+      padding:0;
+      color:#727d9e;
+      background:none;
+      font:inherit;
+      text-decoration:underline;
+      cursor:pointer;
+    }
