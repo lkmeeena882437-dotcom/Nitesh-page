@@ -8,7 +8,7 @@ Open `script.js` and edit the `CONFIG` block:
 
 ```js
 const CONFIG = {
-  rate: 115,
+  rate: 135,
   whatsappNumber: "",
   telegramUrl: "",
   metaPixelId: "YOUR_META_PIXEL_ID",
