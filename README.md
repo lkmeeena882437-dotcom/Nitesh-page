@@ -1,6 +1,6 @@
 # USDT Buyer Landing Page
 
-Single-screen landing page for connecting USDT sellers with buyers.
+Premium single-screen mobile landing page for connecting USDT sellers with buyers.
 
 ## Setup
 
@@ -24,9 +24,10 @@ const CONFIG = {
 
 ## Included
 
-- Responsive single-screen design
-- WhatsApp and Telegram contact buttons
-- USDT amount and network selection
+- Main headline: **SELL YOUR USDT**
+- Responsive single-screen mobile layout with no scrolling
+- Mixed-color premium typography and glow effects
+- WhatsApp and Telegram buyer contact buttons
 - Meta Pixel PageView, ViewContent, Lead and Telegram click tracking
 - UTM and `fbclid` capture
 - Privacy consent prompt
