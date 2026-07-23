@@ -9,11 +9,12 @@ const CONFIG = {
   requireCookieConsent: true
 };
 
-document.getElementById("rateText").textContent = `₹${CONFIG.rate}`;
-
+const rateText = document.getElementById("rateText");
 const whatsappBtn = document.getElementById("whatsappBtn");
 const telegramBtn = document.getElementById("telegramBtn");
 const toast = document.getElementById("toast");
+
+rateText.textContent = `₹${CONFIG.rate}`;
 
 function showToast(message) {
   toast.textContent = message;
@@ -107,7 +108,7 @@ function loadMetaPixel() {
   fbq('init', CONFIG.metaPixelId);
   fbq('track', 'PageView');
   fbq('track', 'ViewContent', {
-    content_name: 'USDT Buyer Landing Page',
+    content_name: 'Sell Your USDT Landing Page',
     content_category: 'USDT Buyer Contact'
   });
 
@@ -162,81 +163,3 @@ privacyModal.addEventListener("click", (event) => {
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") privacyModal.classList.remove("show");
 });
-
-/* ---------------- LIVE CHART BACKGROUND ---------------- */
-const canvas = document.getElementById("chart");
-const ctx = canvas.getContext("2d");
-let candles = [];
-let dpr = Math.min(window.devicePixelRatio || 1, 2);
-
-function resize() {
-  dpr = Math.min(window.devicePixelRatio || 1, 2);
-  canvas.width = Math.floor(innerWidth * dpr);
-  canvas.height = Math.floor(innerHeight * dpr);
-  canvas.style.width = innerWidth + "px";
-  canvas.style.height = innerHeight + "px";
-  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-  createCandles();
-}
-
-function createCandles() {
-  candles = [];
-  const gap = Math.max(27, innerWidth / 20);
-  let price = innerHeight * .70;
-
-  for (let x = -gap; x < innerWidth + gap; x += gap) {
-    const open = price + (Math.random() - .5) * 44;
-    const close = open + (Math.random() - .43) * 58;
-    const high = Math.min(open, close) - (9 + Math.random() * 23);
-    const low = Math.max(open, close) + (9 + Math.random() * 23);
-
-    candles.push({
-      x, open, close, high, low,
-      phase: Math.random() * Math.PI * 2
-    });
-
-    price = close - 3;
-  }
-}
-
-function draw(time) {
-  ctx.clearRect(0, 0, innerWidth, innerHeight);
-  const shift = Math.sin(time / 4200) * 5;
-
-  ctx.beginPath();
-  candles.forEach((candle, index) => {
-    const y = candle.close + Math.sin(time / 1600 + candle.phase) * 4 + shift;
-    index ? ctx.lineTo(candle.x, y) : ctx.moveTo(candle.x, y);
-  });
-  ctx.strokeStyle = "rgba(92,242,255,.16)";
-  ctx.lineWidth = 1.4;
-  ctx.stroke();
-
-  candles.forEach((candle) => {
-    const drift = Math.sin(time / 1750 + candle.phase) * 4 + shift;
-    const bullish = candle.close < candle.open;
-    const color = bullish
-      ? "rgba(92,242,255,.42)"
-      : "rgba(255,111,216,.30)";
-
-    const width = 11;
-    const top = Math.min(candle.open, candle.close) + drift;
-    const height = Math.max(4, Math.abs(candle.close - candle.open));
-
-    ctx.strokeStyle = color;
-    ctx.lineWidth = 1.2;
-    ctx.beginPath();
-    ctx.moveTo(candle.x, candle.high + drift);
-    ctx.lineTo(candle.x, candle.low + drift);
-    ctx.stroke();
-
-    ctx.fillStyle = color;
-    ctx.fillRect(candle.x - width / 2, top, width, height);
-  });
-
-  requestAnimationFrame(draw);
-}
-
-addEventListener("resize", resize, { passive: true });
-resize();
-requestAnimationFrame(draw);
