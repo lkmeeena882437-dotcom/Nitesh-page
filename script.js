@@ -1,10 +1,10 @@
 /* ==========================================================
-   QUICK CONFIG — ADD YOUR DETAILS LATER
+   QUICK CONFIG — CONTACT DETAILS
 ========================================================== */
 const CONFIG = {
   rate: 135,
-  whatsappNumber: "",
-  telegramUrl: "",
+  whatsappNumber: "918690596158",
+  telegramUrl: "https://t.me/cryptobuyerp2p",
   metaPixelId: "YOUR_META_PIXEL_ID",
   requireCookieConsent: true
 };
@@ -53,7 +53,7 @@ whatsappBtn.addEventListener("click", (event) => {
   event.preventDefault();
 
   if (!CONFIG.whatsappNumber.trim()) {
-    showToast("Add your WhatsApp number in the CONFIG section.");
+    showToast("WhatsApp contact is currently unavailable.");
     return;
   }
 
@@ -69,7 +69,7 @@ telegramBtn.addEventListener("click", (event) => {
   event.preventDefault();
 
   if (!CONFIG.telegramUrl.trim()) {
-    showToast("Add your Telegram link in the CONFIG section.");
+    showToast("Telegram contact is currently unavailable.");
     return;
   }
 
