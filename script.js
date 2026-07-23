@@ -49,10 +49,26 @@ function buildWhatsAppLink() {
   return `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(message)}`;
 }
 
-whatsappBtn.addEventListener("click", (event) => {
-  event.preventDefault();
+/* Use real anchor links so mobile browsers do not block the buttons. */
+if (CONFIG.whatsappNumber.trim()) {
+  whatsappBtn.href = buildWhatsAppLink();
+  whatsappBtn.target = "_blank";
+  whatsappBtn.rel = "noopener noreferrer";
+} else {
+  whatsappBtn.href = "#";
+}
 
+if (CONFIG.telegramUrl.trim()) {
+  telegramBtn.href = CONFIG.telegramUrl;
+  telegramBtn.target = "_blank";
+  telegramBtn.rel = "noopener noreferrer";
+} else {
+  telegramBtn.href = "#";
+}
+
+whatsappBtn.addEventListener("click", (event) => {
   if (!CONFIG.whatsappNumber.trim()) {
+    event.preventDefault();
     showToast("WhatsApp contact is currently unavailable.");
     return;
   }
@@ -61,14 +77,11 @@ whatsappBtn.addEventListener("click", (event) => {
     content_name: "USDT Buyer WhatsApp Enquiry",
     content_category: "USDT Buyer Contact"
   });
-
-  window.open(buildWhatsAppLink(), "_blank", "noopener");
 });
 
 telegramBtn.addEventListener("click", (event) => {
-  event.preventDefault();
-
   if (!CONFIG.telegramUrl.trim()) {
+    event.preventDefault();
     showToast("Telegram contact is currently unavailable.");
     return;
   }
@@ -76,8 +89,6 @@ telegramBtn.addEventListener("click", (event) => {
   trackMeta("TelegramClick", {
     content_name: "USDT Buyer Telegram Contact"
   }, true);
-
-  window.open(CONFIG.telegramUrl, "_blank", "noopener");
 });
 
 /* ---------------- META PIXEL ---------------- */
