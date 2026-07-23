@@ -1,11 +1,11 @@
 .toast{
   position:fixed;
   left:50%;
-  bottom:18px;
+  bottom:calc(16px + env(safe-area-inset-bottom));
   z-index:30;
   width:min(calc(100% - 24px),440px);
   padding:12px 14px;
-  transform:translate(-50%,150%);
+  transform:translate(-50%,160%);
   border:1px solid rgba(92,242,255,.30);
   border-radius:16px;
   color:#eefcff;
@@ -22,7 +22,7 @@
 .consent{
   position:fixed;
   left:50%;
-  bottom:12px;
+  bottom:calc(12px + env(safe-area-inset-bottom));
   z-index:40;
   display:none;
   width:min(calc(100% - 20px),450px);
@@ -110,89 +110,367 @@
   66%,100%{left:126%}
 }
 
+/* Mobile-first repair: keeps every important section inside one screen. */
 @media (max-width:480px){
-  .stage{padding:0}
+  html,body{
+    width:100%;
+    height:100%;
+    min-height:100%;
+    overflow:hidden;
+    overscroll-behavior:none;
+  }
+
+  .stage{
+    width:100%;
+    height:100svh;
+    min-height:100svh;
+    padding:0;
+    display:block;
+  }
+
   .app{
     width:100%;
-    height:100dvh;
+    height:100svh;
+    min-height:100svh;
+    max-height:none;
+    margin:0;
+    padding:
+      calc(12px + env(safe-area-inset-top))
+      14px
+      calc(9px + env(safe-area-inset-bottom));
+    border:0;
     border-radius:0;
-    border-left:0;
-    border-right:0;
-    padding-left:14px;
-    padding-right:14px;
+    display:grid;
+    grid-template-rows:auto auto auto auto auto auto auto auto;
+    align-content:space-between;
+    gap:clamp(5px,.75svh,9px);
+  }
+
+  .topbar{
+    min-height:40px;
+    gap:8px;
+  }
+
+  .desk{gap:8px}
+
+  .mark{
+    width:40px;
+    height:40px;
+    border-radius:13px;
+  }
+  .mark svg{width:25px;height:25px}
+
+  .desk-name{
+    font-size:12.5px;
+    letter-spacing:.035em;
+  }
+  .desk-sub{
+    margin-top:1px;
+    font-size:7.5px;
+    letter-spacing:.12em;
+  }
+
+  .online{
+    gap:6px;
+    padding:7px 9px;
+    font-size:8px;
+    letter-spacing:.055em;
+  }
+  .dot{width:6px;height:6px}
+
+  .hero{
+    width:100%;
+    padding:0;
+  }
+
+  .kicker{
+    margin-bottom:6px;
+    font-size:8px;
+    letter-spacing:.16em;
+  }
+  .kicker i{padding:0 5px}
+
+  h1{
+    width:100%;
+    display:flex;
+    flex-wrap:nowrap;
+    align-items:center;
+    justify-content:center;
+    gap:0 clamp(5px,1.8vw,8px);
+    font-size:clamp(29px,9.55vw,43px);
+    line-height:.94;
+    letter-spacing:-.065em;
+    white-space:nowrap;
+  }
+  .word{flex:0 0 auto}
+
+  .hero-line{
+    margin-top:8px;
+    max-width:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:2px 5px;
+    font-size:clamp(9.5px,2.85vw,11.5px);
+    line-height:1.16;
+  }
+  .hero-line span,
+  .hero-line em{margin-left:0}
+
+  .rate-card{
+    width:100%;
+    padding:11px 12px 10px;
+    border-radius:21px;
+  }
+
+  .rate-label{
+    font-size:8px;
+    letter-spacing:.18em;
+  }
+
+  .rate-main{
+    width:100%;
+    max-width:340px;
+    margin-top:4px;
+    padding:0;
+    display:flex;
+    align-items:flex-end;
+    justify-content:center;
+    gap:10px;
+  }
+
+  .rate-value{
+    flex:0 1 auto;
+    min-width:0;
+    font-size:clamp(58px,18vw,78px);
+    line-height:.86;
+    letter-spacing:-.078em;
+  }
+
+  .rate-meta{
+    min-width:76px;
+    padding-bottom:7px;
+    gap:4px;
+  }
+  .rate-meta strong{font-size:12.5px}
+  .rate-meta span{font-size:6.8px;letter-spacing:.055em}
+
+  .rate-strip{
+    margin-top:4px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-wrap:nowrap;
+    gap:5px;
+    font-size:6.8px;
+    letter-spacing:.02em;
+    white-space:nowrap;
+  }
+  .rate-strip i{padding:0 1px}
+
+  .trust-card{
+    min-height:55px;
+    grid-template-columns:38px minmax(0,1fr) auto;
+    gap:9px;
+    padding:9px 10px;
+    border-radius:17px;
+  }
+
+  .shield{
+    width:38px;
+    height:38px;
+    border-radius:12px;
+  }
+  .shield svg{width:21px;height:21px}
+
+  .trust-copy h2{
+    font-size:clamp(11.5px,3.3vw,14px);
+    line-height:1.06;
+  }
+  .trust-copy p{
+    margin-top:3px;
+    font-size:8.5px;
+    line-height:1.14;
+  }
+
+  .verified{
+    min-width:54px;
+    padding:6px 7px;
+    font-size:7px;
+    letter-spacing:.055em;
+  }
+
+  .benefits{
+    width:100%;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:6px;
+  }
+
+  .benefit{
+    padding:8px 4px;
+    border-radius:15px;
+  }
+  .benefit-icon{
+    width:27px;
+    height:27px;
+    margin-bottom:4px;
+    border-radius:9px;
+  }
+  .benefit-icon svg{width:15px;height:15px}
+  .benefit strong{font-size:9px}
+  .benefit span{margin-top:2px;font-size:7px}
+
+  .contact-grid{
+    width:100%;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:7px;
+  }
+
+  .contact-btn{
+    min-width:0;
+    min-height:52px;
+    gap:8px;
+    padding:0 10px;
+    border-radius:17px;
+  }
+  .contact-btn svg{width:23px;height:23px}
+  .contact-copy strong{
+    overflow:hidden;
+    text-overflow:ellipsis;
+    font-size:clamp(10.5px,3vw,12px);
+  }
+  .contact-copy span{
+    margin-top:2px;
+    font-size:6.8px;
+    letter-spacing:.055em;
+  }
+
+  .logos{
+    width:100%;
+    padding:7px 7px 6px;
+    border-radius:14px;
+  }
+  .logos-title{
+    margin-bottom:5px;
+    font-size:6.2px;
+    letter-spacing:.12em;
+  }
+  .logo-row{gap:4px}
+  .logo{
+    padding:6px 2px;
+    border-radius:8px;
+    font-size:6.7px;
+  }
+  .fine{
+    margin-top:4px;
+    font-size:5.7px;
+    line-height:1.1;
+  }
+
+  .footer{
+    min-height:10px;
+    gap:6px;
+    font-size:6.8px;
   }
 }
 
-@media (max-width:390px){
-  .desk-name{font-size:12px}
-  .online{padding:7px 8px;font-size:8px}
-  h1{font-size:clamp(35px,10.8vw,45px);gap:0 6px}
-  .hero-line{font-size:11.5px}
-  .rate-main{gap:8px}
-  .rate-meta{min-width:82px}
-  .rate-meta strong{font-size:14px}
-  .contact-copy strong{font-size:12px}
-}
-
-@media (max-width:345px){
+@media (max-width:370px){
+  .desk-name{font-size:11px}
   .desk-sub{display:none}
-  .mark{width:38px;height:38px;border-radius:12px}
-  .mark svg{width:24px;height:24px}
-  .online span:last-child{display:none}
-  .online{padding:10px}
-  h1{font-size:34px}
-  .hero-line em{display:none}
-  .verified{display:none}
-  .trust-card{grid-template-columns:40px minmax(0,1fr)}
-  .contact-grid{grid-template-columns:1fr}
-  .contact-btn{min-height:48px}
-  .contact-copy{text-align:center}
-  .logo-row{grid-template-columns:repeat(3,minmax(0,1fr))}
-  .trust-wallet,.metamask{display:none}
+  .online{padding:7px 8px;font-size:7px}
+
+  h1{
+    font-size:clamp(27px,9.25vw,34px);
+    gap:0 5px;
+  }
+
+  .rate-value{font-size:clamp(54px,18vw,66px)}
+  .rate-meta{min-width:68px}
+  .rate-meta strong{font-size:11.5px}
+  .rate-meta span{font-size:6px}
+
+  .trust-copy p{display:none}
+  .verified{min-width:49px;padding:6px;font-size:6.5px}
+
+  .contact-btn{padding:0 8px;gap:6px}
+  .contact-btn svg{width:21px;height:21px}
+  .contact-copy strong{font-size:10px}
+  .contact-copy span{font-size:6.2px}
+
+  .logo{font-size:6.2px}
 }
 
-@media (max-height:780px){
-  .app{padding-top:12px;padding-bottom:10px;gap:7px}
-  .topbar{min-height:38px}
-  .mark{width:38px;height:38px;border-radius:12px}
-  .mark svg{width:24px;height:24px}
-  .hero-line{margin-top:7px}
-  .rate-card{padding:11px 14px 10px}
-  .rate-value{font-size:clamp(58px,16vw,82px)}
-  .trust-card{padding:9px 10px}
-  .shield{width:38px;height:38px}
-  .benefit{padding:8px 6px}
-  .contact-btn{min-height:53px}
-  .logos{padding-top:7px;padding-bottom:6px}
-}
+/* Height tuning prevents bottom sections from being clipped on short phones. */
+@media (max-width:480px) and (max-height:760px){
+  .app{
+    padding-top:calc(9px + env(safe-area-inset-top));
+    padding-bottom:calc(7px + env(safe-area-inset-bottom));
+    gap:5px;
+  }
 
-@media (max-height:700px){
-  .app{gap:5px;padding-top:9px;padding-bottom:8px}
-  .desk-sub,.kicker,.fine,.rate-strip{display:none}
-  h1{font-size:clamp(34px,9.5vw,48px)}
-  .hero-line{font-size:11px;margin-top:6px}
-  .rate-card{padding:9px 12px}
-  .rate-label{font-size:8px}
-  .rate-value{font-size:56px}
+  .topbar{min-height:36px}
+  .mark{width:36px;height:36px;border-radius:11px}
+  .mark svg{width:22px;height:22px}
+
+  .kicker{margin-bottom:5px}
+  h1{font-size:clamp(28px,9.1vw,39px)}
+  .hero-line{margin-top:6px;font-size:9.5px}
+
+  .rate-card{padding:9px 11px 8px}
+  .rate-value{font-size:clamp(54px,16.8vw,70px)}
   .rate-meta{padding-bottom:5px}
-  .rate-meta span{display:none}
-  .trust-copy p,.benefit span{display:none}
-  .trust-card{padding:7px 9px}
-  .benefit{padding:7px 5px}
-  .benefit-icon{width:26px;height:26px;margin-bottom:4px}
-  .contact-btn{min-height:49px}
-  .logos{padding:6px 8px}
-  .footer{font-size:7px}
+  .rate-strip{font-size:6.3px}
+
+  .trust-card{min-height:49px;padding:7px 9px}
+  .shield{width:34px;height:34px}
+  .shield svg{width:19px;height:19px}
+  .trust-copy h2{font-size:11.5px}
+  .trust-copy p{font-size:7.8px}
+
+  .benefit{padding:6px 4px}
+  .benefit-icon{width:24px;height:24px;margin-bottom:3px}
+  .benefit-icon svg{width:14px;height:14px}
+  .benefit strong{font-size:8.5px}
+  .benefit span{font-size:6.5px}
+
+  .contact-btn{min-height:47px}
+  .logos{padding-top:6px;padding-bottom:5px}
+  .fine{display:none}
 }
 
-@media (max-height:620px){
-  .online{font-size:8px;padding:7px 8px}
-  .hero-line{display:none}
-  .rate-meta strong{font-size:13px}
-  .verified{display:none}
-  .trust-card{grid-template-columns:38px minmax(0,1fr)}
+@media (max-width:480px) and (max-height:680px){
+  .app{gap:4px}
+
+  .kicker,
+  .desk-sub,
+  .rate-strip,
+  .trust-copy p,
+  .benefit span,
+  .fine{display:none}
+
+  .hero-line{margin-top:5px;font-size:9px}
+  .rate-card{padding:8px 10px 7px}
+  .rate-label{font-size:7px}
+  .rate-value{font-size:52px}
+  .rate-meta span{display:none}
+  .rate-meta{min-width:62px;padding-bottom:4px}
+  .rate-meta strong{font-size:11px}
+
+  .trust-card{min-height:43px;padding:6px 8px}
+  .benefit{padding:5px 3px}
+  .contact-btn{min-height:43px}
   .logos-title{display:none}
-  .logo{padding:6px 4px}
+  .logo{padding:5px 2px}
+  .footer{font-size:6.2px}
+}
+
+@media (max-width:480px) and (max-height:610px){
+  .hero-line{display:none}
+  .verified{display:none}
+  .trust-card{grid-template-columns:34px minmax(0,1fr)}
+  .logos{display:none}
+  .footer{font-size:6px}
 }
 
 @media (prefers-reduced-motion:reduce){
